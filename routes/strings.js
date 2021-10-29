@@ -26,7 +26,7 @@ router.post("/", function(req, res, next) {
     throw new BadRequestError(errs);
   }
 
-  const string = req.body.string;
+  const { string } = req.body;
   stringList.push(string);
   return res.status(201).json({ added: string });
 });
