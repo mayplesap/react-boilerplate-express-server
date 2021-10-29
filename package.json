@@ -1,12 +1,21 @@
 {
-  "name": "react-boilerplate-express-server",
+  "name": "dovenmuehle-takehome-express-server",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "test": "jest -i"
   },
   "author": "",
   "license": "ISC",
   "keywords": [],
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.0.0-alpha.8",
+    "jsonschema": "^1.4.0"
+  },
+  "devDependencies": {
+    "supertest": "^6.1.6"
+  }
 }
