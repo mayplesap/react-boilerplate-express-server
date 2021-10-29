@@ -4,20 +4,17 @@ const request = require("supertest");
 
 const app = require("../app");
 
+/********** POST /strings **********/
+
 describe("POST /strings", function() {
   const newString = {
     "string": "test string"
-  };
-  const invalidString = {
-    "string": 123
   };
 
   test("correctly adds", async function() {
     const resp = await request(app)
       .post("/strings")
-      .send({
-        "string": "test string"
-      })
+      .send(newString);
 
     expect(resp.statusCode).toEqual(201);
     expect(resp.body).toEqual({
@@ -28,19 +25,32 @@ describe("POST /strings", function() {
   test("invalid - empty value", async function() {
     const resp = await request(app)
       .post("/strings")
-      .send({})
+      .send({});
 
     expect(resp.statusCode).toEqual(400);
-    expect(resp.body.error.message).toEqual([ 'instance requires property "string"' ])
+    expect(resp.body.error.message).toEqual([ 'instance requires property "string"' ]);
   });
 
   test("invald - not a string", async function() {
     const resp = await request(app)
       .post("/strings")
-      .send(invalidString)
+      .send({
+        "string": 123
+      });
 
     expect(resp.statusCode).toEqual(400);
-    expect(resp.body.error.message).toEqual([ 'instance.string is not of a type(s) string' ])
+    expect(resp.body.error.message).toEqual([ 'instance.string is not of a type(s) string' ]);
   });
+});
 
+/********** GET /strings **********/
+
+describe("GET /strings", function() {
+  test("gets list of strings", async function() {
+    const resp = await request(app).get("/strings");
+    
+    expect(resp.body).toEqual({
+      strings: expect.any(Array)
+    });
+  });
 });
