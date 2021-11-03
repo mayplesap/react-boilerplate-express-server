@@ -2,8 +2,7 @@
 dmi takehome
 
 ## Info
-- Express server side for the react-boilerplate-app
-- https://github.com/mayplesap/react-boilerplate-app
+- Express server side the react-boilerplate-app -> https://github.com/mayplesap/react-boilerplate-app
 
 ## Getting Started
   - install dependencies with `npm install`
